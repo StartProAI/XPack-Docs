@@ -90,6 +90,13 @@ const config: Config = {
     ],
   ],
   themeConfig: {
+    metadata: [
+      {name: 'keywords', content: 'XPack, AI, Documentation, 人工智能, 文档'},
+      {name: 'description', content: 'XPack官方文档 - 探索AI的无限可能'},
+      {name: 'twitter:card', content: 'summary_large_image'},
+      {name: 'twitter:title', content: 'XPack Docs'},
+      {name: 'twitter:description', content: 'XPack官方文档 - 探索AI的无限可能'}
+    ],
     navbar: {
       title: 'Docs',
       logo: {
@@ -109,13 +116,13 @@ const config: Config = {
           label: 'Get Started',
           position: 'right', // 右侧显示按钮
           className: 'navbar-button', // 自定义样式类名
-          href: '/get_start', // 按钮链接的目标
+          href: 'docs/get_start', // 按钮链接的目标
         },
         {
           href: 'https://github.com/xpack-ai',
           position: 'right',
           className: 'header-github-link',
-          'aria-label': 'xroute repository',
+          'aria-label': 'xpack repository',
         },
       ],
     },
@@ -124,6 +131,33 @@ const config: Config = {
       darkTheme: prismThemes.dracula,
     },
   } satisfies Preset.ThemeConfig,
+  headTags: [
+    {
+      tagName: 'link',
+      attributes: {
+        rel: 'preconnect',
+        href: 'https://docs.xpack.ai'
+      }
+    },
+    {
+      tagName: 'script',
+      attributes: {
+        type: 'application/ld+json'
+      },
+      innerHTML: JSON.stringify({
+        '@context': 'https://schema.org/',
+        '@type': 'WebSite',
+        name: 'XPack Docs',
+        url: 'https://docs.xpack.ai',
+        description: 'XPack官方文档 - 探索AI的无限可能',
+        publisher: {
+          '@type': 'Organization',
+          name: 'XPack AI',
+          url: 'https://github.com/xpack-ai'
+        }
+      })
+    }
+  ]
 };
 
 export default config;
